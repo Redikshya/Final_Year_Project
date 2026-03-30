@@ -47,9 +47,9 @@ app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
-app.config['MAIL_USERNAME'] = '021bscit017@sxc.edu.np'
+app.config['MAIL_USERNAME'] = 'youremail@gmail.com'
 
-app.config['MAIL_PASSWORD'] = 'mswj vnmp koba hsxc'
+app.config['MAIL_PASSWORD'] = 'abcd efgh ijkl mnop'
 
 app.config['MAIL_DEFAULT_SENDER'] = 'Flask Demo <noreply@yourdomain.com>'
 mail = Mail(app)
