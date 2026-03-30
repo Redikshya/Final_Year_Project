@@ -1,0 +1,257 @@
+<!DOCTYPE html>  
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lockify Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    /* ======= BACKGROUND ======= */
+    body {
+        background-color: #9bddff;
+        background-image: url('static/images/back.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        min-height: 100vh;
+        color: white;
+        display: flex;
+        justify-content: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        position: relative;
+        overflow-y: auto;
+        overflow-x: hidden;
+        padding: 30px 0; /* reduced padding */
+    }
+
+    /* ======= MAIN DASHBOARD BOX ======= */
+    .content-box {
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 40px 30px; /* reduced padding */
+        width: 90%;
+        max-width: 900px; /* slightly smaller width */
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+        animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ======= TITLE ======= */
+    h1.page-title {
+        font-size: 48px; /* smaller font */
+        font-weight: 800;
+        margin-bottom: 25px;
+        text-align: center;
+        color: #1c6dd0;
+        letter-spacing: 1.5px;
+    }
+
+    /* ======= MESSAGE TEXT ======= */
+    p.mess {
+        color: #0077ff;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 30px;
+    }
+
+    /* ======= BUTTON BOX ======= */
+    .button-box {
+        background-color: #ffffff;
+        border-radius: 14px;
+        padding: 20px 10px; /* reduced padding */
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+        transition: all 0.3s ease;
+        width: 85%;
+        height: 150px; /* reduced height */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        cursor: pointer;
+    }
+
+    .button-box:hover {
+        transform: translateY(-4px) scale(1.02);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .button-box img {
+        width: 55px; /* smaller icons */
+        height: 55px;
+        object-fit: contain;
+        margin-bottom: 8px;
+        transition: transform 0.3s ease;
+    }
+
+    .button-box:hover img {
+        transform: rotate(5deg) scale(1.08);
+    }
+
+    /* ======= BUTTONS ======= */
+    .btn {
+        width: 80%;
+        background-color: white;
+        color: #1c6dd0;
+        font-weight: 600;
+        border: 2px solid #1c6dd0;
+        border-radius: 10px;
+        padding: 6px; /* smaller padding */
+        transition: all 0.3s ease;
+        font-size: 15px;
+    }
+
+    .btn:hover {
+        background-color: #1c6dd0;
+        color: white;
+    }
+
+    /* ======= LOGOUT BUTTON STYLE ======= */
+    .logout-box {
+        position: fixed;
+        top: 20px;
+        right: 25px;
+        background-color: transparent;
+        text-align: center;
+        z-index: 1000;
+    }
+
+    .logout-box img {
+        width: 40px; /* smaller logout icon */
+        height: 40px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto 5px auto;
+        transition: transform 0.3s ease;
+    }
+
+    .logout-box img:hover {
+        transform: rotate(8deg);
+    }
+
+    .logout-btn {
+        background: none;
+        border: none;
+        color: #004080;
+        font-weight: 700;
+        font-size: 18px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: opacity 0.3s ease;
+    }
+
+    .logout-btn:hover {
+        opacity: 0.7;
+    }
+
+    /* ======= LAYOUT ======= */
+    .row.g-3 {
+        margin-top: 5px !important;
+    }
+
+    .col-md-6 {
+        display: flex;
+        justify-content: center;
+    }
+
+    .g-3 > * {
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+    }
+
+    @media (max-width: 768px) {
+        .content-box {
+            padding: 25px 15px;
+        }
+        h1.page-title {
+            font-size: 36px;
+        }
+        .button-box {
+            height: auto;
+            width: 100%;
+        }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ======= LOGOUT BUTTON (TOP RIGHT) ======= -->
+  <div class="logout-box">
+    <img src="static/images/five.png" alt="Logout">
+    <a href="/logout" class="logout-btn">Logout</a>
+  </div>
+
+  <!-- ======= MAIN DASHBOARD ======= -->
+  <div class="content-box">
+    <div class="container text-center">
+      <h1 class="page-title">
+        <a href="/" class="text-link" style="text-decoration:none; color:#004080;">Lockify</a>
+      </h1>
+
+      {% if mess %}
+        <p class="mess">{{ mess }}</p>
+      {% endif %}
+
+      <div class="row justify-content-center g-3">
+
+        <!-- Door Access -->
+        <div class="col-md-6 col-sm-12">
+          <div class="button-box">
+            <img src="static/images/one.png" alt="Door Access">
+            <a href="/access" class="btn">Initiate Access</a>
+          </div>
+        </div>
+
+        <!-- Access List -->
+        <div class="col-md-6 col-sm-12">
+          <div class="button-box">
+            <img src="static/images/two.png" alt="Access List">
+            <a href="/accesslist" class="btn">Access List</a>
+          </div>
+        </div>
+
+        <!-- Add New User -->
+        <div class="col-md-6 col-sm-12">
+          <div class="button-box">
+            <img src="static/images/three.png" alt="Add User">
+            <a href="/adduser" class="btn">Add New User</a>
+          </div>
+        </div>
+        
+        <!-- Registered Users -->
+        <div class="col-md-6 col-sm-12">
+          <div class="button-box">
+            <img src="static/images/four.png" alt="Registered Users">
+            <a href="/registeruserlist" class="btn">Registered Users</a>
+          </div>
+        </div>
+
+        <!-- Change Passcode -->
+        <div class="col-md-6 col-sm-12">
+          <div class="button-box">
+            <img src="static/images/six.png" alt="Change Passcode">
+            <a href="/change_pw" class="btn">Change Passcode</a>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-sm-12">
+          <div class="button-box">
+            <img src="static/images/nine.png" alt="Add Admin">
+            <a href="/add_admin" class="btn">Add Admin</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>

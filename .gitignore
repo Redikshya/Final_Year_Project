@@ -1,0 +1,74 @@
+# ==========================
+# Dataset folders (example)
+# ==========================
+dataset/dhiraj_1/
+dataset/redikshyaa/
+dataset/sahill/
+# Ignore specific dataset subfolders if needed
+# dataset/redikshyaa/
+# dataset/sahill/
+
+# ==========================
+# Model files
+# ==========================
+*.h5
+*.pt
+*.pth
+*.ckpt
+*.pkl
+*.joblib
+
+# ==========================
+# Python cache / compiled files
+# ==========================
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# ==========================
+# Environment / configuration
+# ==========================
+.env
+venv/
+env/
+*.ini
+*.cfg
+
+# ==========================
+# Jupyter / Notebook
+# ==========================
+.ipynb_checkpoints/
+
+# ==========================
+# Logs
+# ==========================
+*.log
+
+# ==========================
+# Temporary / system files
+# ==========================
+*.tmp
+*.swp
+.DS_Store
+desktop.ini
+Thumbs.db
+
+# ==========================
+# Misc files
+# ==========================
+*.pdf
+*.json
+*.csv
+*.xlsx
+*.zip
+*.rar
+*.tar.gz
+
+# ==========================
+# IDE / editor folders
+# ==========================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace

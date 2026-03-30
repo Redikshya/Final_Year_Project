@@ -1,0 +1,60 @@
+CREATE DATABASE IF NOT EXISTS lockify_db;
+USE lockify_db;
+
+CREATE TABLE IF NOT EXISTS uuser (
+    id VARCHAR(20) NOT NULL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    department VARCHAR(2) NOT NULL,   
+    status ENUM('registered') NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS access (
+    access_id INT AUTO_INCREMENT PRIMARY KEY,
+    id VARCHAR(20) NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    access_date DATE NOT NULL,       -- store only date
+    FOREIGN KEY (id) REFERENCES uuser(id) ON DELETE CASCADE
+);
+
+CREATE TABLE admin_passcode (
+    passcode_id INT AUTO_INCREMENT PRIMARY KEY,
+    passcode VARCHAR(255) NOT NULL,
+    last_updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+INSERT INTO admin_passcode (passcode)
+VALUES ('redikshya22');
+USE lockify_db;
+
+CREATE TABLE IF NOT EXISTS admin_table (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    email VARCHAR(100) NOT NULL,
+    login_time DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+
+-- Create the files table
+CREATE TABLE IF NOT EXISTS files (
+    file_id INT AUTO_INCREMENT PRIMARY KEY,
+    file_name VARCHAR(255) NOT NULL,
+    department VARCHAR(2) NOT NULL,       -- 01, 02, 03
+    file_path VARCHAR(500) NOT NULL       -- Path to file on server
+);
+
+-- Insert sample files for Computer Science (department 01)
+INSERT INTO files (file_name, department, file_path) VALUES
+('Data Structures.pdf', 'CS', 'static/secure_files/cs_1.pdf'),
+('Operating Systems.pdf', 'CS', 'static/secure_files/cs_2.pdf'),
+('Database Systems.pdf', 'CS', 'static/secure_files/cs_3.pdf');
+
+-- Insert sample files for Microbiology (department 02)
+INSERT INTO files (file_name, department, file_path) VALUES
+('Microbial Genetics.pdf', 'Biology', 'static/secure_files/mb_1.pdf'),
+('Virology.pdf', 'Biology', 'static/secure_files/mb_2.pdf'),
+('Immunology.pdf', 'Biology', 'static/secure_files/mb_3.pdf');
+
+-- Insert sample files for Physics (department 03)
+INSERT INTO files (file_name, department, file_path) VALUES
+('Quantum Mechanics.pdf', 'Physics', 'static/secure_files/p_1.pdf'),
+('Classical Mechanics.pdf', 'Physics', 'static/secure_files/p_2.pdf'),
+('Electrodynamics.pdf', 'Physics', 'static/secure_files/p_3.pdf');
+

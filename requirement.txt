@@ -1,0 +1,17 @@
+opencv-python==4.8.1.78
+mediapipe
+Flask
+numpy==1.26.4
+scikit-learn==1.4.2
+pandas
+joblib
+tensorflow
+Pillow
+python-dotenv
+matplotlib
+flask-mysqldb
+werkzeug
+pandas
+mtcnn==0.1.1
+scikit-image
+imblearn

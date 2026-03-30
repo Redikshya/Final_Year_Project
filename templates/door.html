@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Door Status</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, rgba(155, 221, 255, 0.95), rgba(155, 221, 255, 0.75));
+        backdrop-filter: blur(8px);
+    }
+
+    .card {
+        background-color: white;
+        padding: 40px;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .image-container img {
+        max-width: 300px;
+        height: auto;
+        margin-bottom: 30px;
+        border-radius: 10px;
+    }
+
+    .status {
+        font-size: 2em;
+        font-weight: bold;
+        padding: 20px;
+        border-radius: 10px;
+        display: inline-block;
+        margin-bottom: 40px;
+        background-color: rgba(255, 255, 255);
+    }
+
+    .unlocked {
+        color: #0a2e6e;
+    }
+
+    .locked {
+        color: #ff6666;
+    }
+
+    .btn-home {
+        display: inline-block;
+        padding: 15px 30px;
+        font-size: 1.2em;
+        color: #0a2e6e;
+        background-color: #f0f0f0;
+        text-decoration: none;
+        border-radius: 8px;
+        transition: 0.3s;
+        font-weight: bold;
+    }
+
+    .btn-home:hover {
+        background-color: #00ff99;
+        color: #0a2e6e;
+    }
+</style>
+</head>
+<body>
+    <div class="card">
+        <div class="image-container">
+            <img src="static/images/access.jpg" alt="Access Image">
+        </div>
+        <p class="status {{ door_state }}">{{ message }}</p>
+        <br><br>
+        <a href="{{ url_for('home') }}" class="btn-home">Back to Home</a>
+    </div>
+</body>
+</html>

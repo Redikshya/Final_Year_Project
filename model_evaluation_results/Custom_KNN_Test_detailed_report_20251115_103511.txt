@@ -1,0 +1,37 @@
+MODEL EVALUATION REPORT
+========================
+
+Model: Custom_KNN_Test
+Date: 2025-11-15 10:35:11
+Total Samples: 60
+
+PERFORMANCE METRICS
+------------------
+Accuracy: 0.9333 (93.33%)
+Precision: 0.9387
+Recall: 0.9333
+F1-Score: 0.9331
+
+PREDICTIONS
+-----------
+Correct: 56
+Incorrect: 4
+Success Rate: 93.33%
+
+CONFUSION MATRIX
+----------------
+[[20  0  0]
+ [ 0 17  3]
+ [ 1  0 19]]
+
+CLASSIFICATION REPORT
+--------------------
+               precision    recall  f1-score   support
+
+   aayush$02$       0.95      1.00      0.98        20
+   debika$03$       1.00      0.85      0.92        20
+sadikshya$01$       0.86      0.95      0.90        20
+
+     accuracy                           0.93        60
+    macro avg       0.94      0.93      0.93        60
+ weighted avg       0.94      0.93      0.93        60

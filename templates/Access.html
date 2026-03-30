@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lockify</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    /* ------------------ BACKGROUND ------------------ */
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, rgba(155, 221, 255, 0.95), rgba(155, 221, 255, 0.75));
+      backdrop-filter: blur(8px);
+    }
+
+    /* ------------------ MAIN GLASS CARD ------------------ */
+    .main-container {
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(10px);
+      border-radius: 25px;
+      padding: 60px 80px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      color: #000;
+      width: 90%;
+      max-width: 600px;
+    }
+
+    h1.page-title {
+      font-size: 48px;
+      font-weight: bold;
+      color: #000;
+      margin-bottom: 20px;
+    }
+
+    .text-link {
+      color: #000;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    .text-link:hover {
+      color: #1a4fc5;
+      text-decoration: none;
+    }
+
+    h3 {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #000;
+    }
+
+    p.mess {
+      font-size: 18px;
+      color: #111;
+      margin-top: 15px;
+    }
+
+    /* ------------------ BUTTON ------------------ */
+    .btn-primary {
+      background-color: #000 !important;
+      border: none;
+      letter-spacing: 2px;
+      font-size: 20px;
+      border-radius: 12px;
+      width: 240px;
+      padding: 12px;
+      font-weight: bold;
+      color: #fff;
+      transition: 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-primary:hover {
+      background-color: #333 !important;
+      transform: scale(1.05);
+    }
+
+    /* ------------------ RESPONSIVE ------------------ */
+    @media (max-width: 768px) {
+      .main-container {
+        width: 95%;
+        padding: 40px 30px;
+      }
+
+      h1.page-title {
+        font-size: 36px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main-container">
+    <h1 class="page-title">
+      <a href="http://127.0.0.1:5001/" class="text-link">Lockify</a>
+    </h1>
+
+    <h3>{{ datetoday2 }} | <span id="clock"></span></h3>
+
+    {% if mess %}
+    <p class="mess">{{ mess }}</p>
+    {% endif %}
+
+    <div class="access-section mt-4">
+      <a href="/accessbtn" style="text-decoration: none;">
+        <button type='submit' class='btn btn-primary'>Initiate Access</button>
+      </a>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script type="text/javascript">
+    function formatAMPM(time) {
+      var hours = time.getHours();
+      var minutes = time.getMinutes();
+      var ampm = hours >= 12 ? 'PM' : 'AM';
+      hours %= 12;
+      hours = hours ? hours : 12;
+      hours = hours < 10 ? '0' + hours : hours;
+      minutes = minutes < 10 ? '0' + minutes : minutes;
+      return hours + ':' + minutes + ' ' + ampm;
+    }
+
+    function clock() {
+      document.getElementById('clock').textContent = formatAMPM(new Date());
+    }
+    setInterval(clock, 1000);
+  </script>
+</body>
+</html>
