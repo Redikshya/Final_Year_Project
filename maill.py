@@ -15,10 +15,10 @@ app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
-app.config['MAIL_USERNAME'] = '021bscit017@sxc.edu.np'  # Your sending email address (and also the recipient in this demo)
+app.config['MAIL_USERNAME'] = 'youremail@gmail.com'  # Your sending email address (and also the recipient in this demo)
 
 # VVVVVVVV  REPLACE THIS WITH YOUR 16-CHARACTER APP PASSWORD  VVVVVVVV
-app.config['MAIL_PASSWORD'] = 'mswj vnmp koba hsxc' # <-- Placeholder for your App Password
+app.config['MAIL_PASSWORD'] = 'abcd efgh ijkl mnop' # <-- Placeholder for your App Password
 # ^^^^^^^^  REPLACE THIS WITH YOUR 16-CHARACTER APP PASSWORD  ^^^^^^^^
 
 app.config['MAIL_DEFAULT_SENDER'] = 'Flask Demo <noreply@yourdomain.com>'
@@ -28,7 +28,7 @@ mail = Mail(app)
 @app.route('/send-email')
 def send_email():
     """Handles the email sending logic."""
-    recipient = '021bscit017@sxc.edu.np' # The email will be sent here
+    recipient = 'youremail@gmail.com' # The email will be sent here
 
     msg = Message(
         subject='[Passcode] Hello Admin!',
@@ -41,7 +41,7 @@ def send_email():
             <p style="margin-top: 20px;">Regards,<br>Your Flask Server</p>
         </div>
         """,
-        body="Hello Admin! Your passcode is redikshya22"
+        body="Hello Admin! Your passcode is blahblah"
     )
 
     try:
@@ -186,9 +186,9 @@ app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
-app.config['MAIL_USERNAME'] = '021bscit017@sxc.edu.np'
+app.config['MAIL_USERNAME'] = 'youremail@gmail.com'
 
-app.config['MAIL_PASSWORD'] = 'mswj vnmp koba hsxc'
+app.config['MAIL_PASSWORD'] = 'abcd efgh ijkl mnop'
 
 app.config['MAIL_DEFAULT_SENDER'] = 'Flask Demo <noreply@yourdomain.com>'
 mail = Mail(app)
@@ -1095,8 +1095,8 @@ def home():
 # ======== Send Passcode Email =========
 @app.route('/send-email')
 def send_email():
-    FIXED_PASSCODE = 'redikshya22'
-    recipient = '021bscit017@sxc.edu.np'  # Fixed admin email
+    FIXED_PASSCODE = 'blahblah'
+    recipient = 'youremail@gmail.com'  # Fixed admin email
 
     msg = Message(
         subject='Your Lockify Passcode',
@@ -1132,7 +1132,7 @@ def intruder_mail():
     def send_email():
         # Push the Flask app context manually
         with app.app_context():
-            recipient = '021bscit017@sxc.edu.np'  # Fixed admin email
+            recipient = 'youremail@gmail.com'  # Fixed admin email
 
             msg = Message(
                 subject='Alert! Unauthorized Access Attempt Detected',
@@ -1163,7 +1163,7 @@ def access_mail(granted_person):
     def send_email():
         # Push the Flask app context manually
         with app.app_context():
-            recipient = '021bscit017@sxc.edu.np'  # Fixed admin email
+            recipient = 'youremail@gmail.com'  # Fixed admin email
             access_time_is = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
             msg = Message(
